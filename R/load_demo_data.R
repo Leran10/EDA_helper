@@ -1,0 +1,55 @@
+#' Load Demo Dataset for EDAhelper
+#'
+#' This function loads a demo dataset included with the EDAhelper package.
+#' The dataset contains various variable types (numeric, categorical, date) 
+#' with some missing values and outliers, making it suitable for demonstrating
+#' EDA techniques.
+#'
+#' @return A data frame with 500 observations and 12 variables:
+#' \describe{
+#'   \item{Age}{Numeric variable with normal distribution}
+#'   \item{Income}{Numeric variable with log-normal distribution and some outliers}
+#'   \item{Height}{Numeric variable in centimeters}
+#'   \item{Weight}{Numeric variable in kilograms with some outliers}
+#'   \item{BMI}{Numeric variable calculated from height and weight}
+#'   \item{BloodPressure}{Numeric variable}
+#'   \item{Gender}{Categorical variable with three levels: "Male", "Female", "Non-binary"}
+#'   \item{Education}{Categorical variable with four levels: "High School", "Bachelor's", "Master's", "PhD"}
+#'   \item{Region}{Categorical variable with five levels: "North", "South", "East", "West", "Central"}
+#'   \item{SmokingStatus}{Categorical variable with three levels: "Never", "Former", "Current"}
+#'   \item{RegistrationDate}{Date variable}
+#'   \item{HealthRisk}{Binary categorical variable: "High" or "Low"}
+#' }
+#'
+#' @note The dataset has intentionally included missing values (approximately 10%) 
+#' and outliers to demonstrate various EDA techniques.
+#'
+#' @examples
+#' \dontrun{
+#' # Load the demo dataset
+#' demo_data <- load_demo_data()
+#' 
+#' # View the structure
+#' str(demo_data)
+#' 
+#' # Use with EDAhelper functions
+#' data_summary(demo_data)
+#' missing_analysis(demo_data)
+#' correlation_analysis(demo_data)
+#' }
+#'
+#' @export
+load_demo_data <- function() {
+  demo_file <- system.file("extdata", "demo_data.csv", package = "EDAhelper")
+  
+  if (demo_file == "") {
+    stop("Demo data not found. Try reinstalling the package.", call. = FALSE)
+  }
+  
+  data <- read.csv(demo_file, stringsAsFactors = FALSE)
+  
+  # Convert the date column
+  data$RegistrationDate <- as.Date(data$RegistrationDate)
+  
+  return(data)
+}

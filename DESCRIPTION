@@ -1,0 +1,33 @@
+Package: EDAhelper
+Title: Helper Functions for Exploratory Data Analysis
+Version: 0.1.0
+Authors@R: 
+    person("Your", "Name", email = "your.email@example.com", role = c("aut", "cre"))
+Description: A collection of functions to streamline exploratory data analysis (EDA).
+    The package provides tools for data summary, visualization, missing value analysis,
+    correlation analysis, and outlier detection.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    dplyr,
+    ggplot2,
+    tidyr,
+    stats,
+    corrplot,
+    purrr,
+    tibble,
+    shiny,
+    shinydashboard,
+    shinyjs,
+    DT,
+    plotly,
+    scales
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    openai,
+    VIM
+Config/testthat/edition: 3
